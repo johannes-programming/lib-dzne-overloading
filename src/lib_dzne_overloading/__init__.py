@@ -33,7 +33,8 @@ class Overload:
         self._callables = dict()
     def __call__(self, **kwargs):
         keywords = frozenset(kwargs.keys())
-        return self[keywords](**kwargs)
+        function = self[keywords]
+        return function(**kwargs)
     def __getitem__(self, key):
         keywords = self._getkeywords(key)
         if keywords not in self._callables.keys():
